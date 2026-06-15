@@ -618,7 +618,7 @@ function toggleAddress(show){
 }
 
 // SUBMIT → Google Form
-const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSfvRPBVOGrGedXb-dkS0n6b-3HEUus3UMhjKY6hC_WEjr9l0A/formResponse'
+const FORM_URL='https://script.google.com/macros/s/AKfycbxSpJeJh5OMw3D_IELBwkmgvKQdFkpQ99KGfr9onbzUvZ833RHHsZTnegVEruJgRtJM0g/exec'
 function submitRSVP(){
   const name=document.getElementById('f-name').value.trim()
   const phone=document.getElementById('f-phone').value.trim()
@@ -628,19 +628,28 @@ function submitRSVP(){
   const address=document.getElementById('f-address').value.trim()
   const blessing=document.getElementById('f-blessing').value.trim()
   const notes=document.getElementById('f-notes').value.trim()
-  const extra=[inviteEl?'喜帖:'+inviteEl.value:'',address?'地址:'+address:'',notes?'備註:'+notes:''].filter(Boolean).join(' | ')
-  const iframe=document.createElement('iframe')
-  iframe.name='hf';iframe.style.display='none'
-  document.body.appendChild(iframe)
-  const form=document.createElement('form')
-  form.method='POST';form.action=FORM_URL;form.target='hf'
-  const data={'entry.1003961123':name,'entry.1445482562':phone,'entry.2143713720':counts.guest,'entry.1404988625':counts.veg,'entry.54869497':counts.chair,'entry.1732233654':blessing+(extra?' | '+extra:'')}
-  Object.entries(data).forEach(([k,v])=>{const i=document.createElement('input');i.type='hidden';i.name=k;i.value=v;form.appendChild(i)})
-  document.body.appendChild(form)
-  form.submit()
+
+  const payload={
+    name: name,
+    phone: phone,
+    guestCount: counts.guest,
+    vegCount: counts.veg,
+    chairCount: counts.chair,
+    needInvite: inviteEl ? inviteEl.value : '不需要',
+    address: address,
+    blessing: blessing,
+    notes: notes
+  }
+
+  fetch(FORM_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  })
+
   document.getElementById('rsvpForm').style.display='none'
   document.getElementById('successWrap').style.display='block'
-  setTimeout(()=>{document.body.removeChild(form);document.body.removeChild(iframe)},1000)
 }
 </script>
 </body>
