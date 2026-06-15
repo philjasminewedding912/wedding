@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>陽府囍宴 · Jasmine & Phil's Wedding · 2026.09.12</title>
+<title>陽府囍宴 · Phil & Jasmine's Wedding · 2026.09.12</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
@@ -47,6 +47,18 @@ nav.scrolled{background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border
 .scroll-hint span{font-size:12px;letter-spacing:0.2em;color:white;text-transform:uppercase}
 .scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.5);animation:scrollpulse 2s ease-in-out infinite}
 @keyframes scrollpulse{0%,100%{opacity:0.3;transform:scaleY(0.6)}50%{opacity:1;transform:scaleY(1)}}
+
+
+/* ATTENDANCE */
+.attendance-group{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.attend-item{display:flex;align-items:center;gap:12px;cursor:pointer;padding:14px 18px;background:var(--ivory);border:0.5px solid var(--gold-pale);font-size:17px;color:var(--dark);transition:border-color 0.2s}
+.attend-item:hover{border-color:var(--gold)}
+.attend-item input{display:none}
+.attend-item.selected{border-color:var(--gold);background:var(--gold-pale)}
+.attend-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--gold-light);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.attend-item.selected .attend-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);display:block}
+.attend-fields{transition:opacity 0.3s}
+.attend-fields.hidden{display:none}
 
 /* COUNTDOWN */
 .countdown-section{background:var(--dark);padding:3rem 2rem;text-align:center}
@@ -171,7 +183,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.8}
 
 /* COUPLE PHOTO */
 .couple-photo-section{background:var(--cream);padding:0}
-.couple-full-img{width:100%;height:70vh;min-height:400px;object-fit:contain;object-position:center;display:block;background:var(--ivory)}
+.couple-full-img{width:100%;max-height:800px;object-fit:contain;display:block;background:var(--ivory)}
 .couple-date-overlay{text-align:center;padding:2rem 1.5rem 0;background:var(--cream)}
 .couple-date-text{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,2vw,16px);letter-spacing:0.4em;color:var(--gold);text-transform:uppercase}
 
@@ -181,8 +193,8 @@ textarea{resize:vertical;min-height:90px;line-height:1.8}
 .person-card{text-align:center;flex:0 0 auto}
 .person-avatar{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:center 10%;border:3px solid var(--gold-pale);display:block;margin:0 auto 1rem;overflow:hidden}
 .person-role{font-size:15px;letter-spacing:0.15em;color:var(--gold);font-family:'Noto Serif TC',serif;font-style:normal;margin-bottom:8px}
-.person-name-en{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);letter-spacing:0.05em}
-.person-name-zh{font-size:16px;color:var(--mid);letter-spacing:0.15em;margin-top:6px}
+.person-name-en{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--dark);letter-spacing:0.05em}
+.person-name-zh{font-size:20px;color:var(--mid);letter-spacing:0.15em;margin-top:6px}
 .couple-heart{font-size:24px;color:var(--gold);flex:0 0 auto;margin-top:-1rem}
 
 /* FOOTER */
@@ -231,7 +243,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <img class="hero-bg" id="heroBg" src="https://i.postimg.cc/TwVVVZBK/S-149823500.jpg" alt="Jasmine & Phil">
+  <img class="hero-bg" id="heroBg" src="https://i.postimg.cc/TwVVVZBK/S-149823500.jpg" alt="Phil & Jasmine">
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
     <p class="hero-eyebrow" style="font-size:clamp(32px,5vw,56px);letter-spacing:0.2em;font-family:'Noto Serif TC',serif;font-weight:500;margin-bottom:0.8rem;opacity:1;text-shadow:0 2px 12px rgba(0,0,0,0.3)">陽府囍宴</p>
@@ -292,7 +304,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
       All of you mean more to us than words can say.<br><br>
       Among thirty thousand days,<br>
       we are so glad this one will be shared with you.<br><br>
-      <em style="font-family:'Cormorant Garamond',serif;font-size:1.1em;color:var(--gold)">Jasmine &amp; Phil</em>
+      <em style="font-family:'Cormorant Garamond',serif;font-size:1.1em;color:var(--gold)">Phil &amp; Jasmine</em>
     </p>
   </div>
 </section>
@@ -300,7 +312,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
 
 <!-- COUPLE PHOTO -->
 <div class="couple-photo-section">
-  <img class="couple-full-img fade-in" src="https://i.postimg.cc/0y8MJz0T/ONE04780-(1).jpg" alt="Jasmine & Phil">
+  <img class="couple-full-img fade-in" src="https://i.postimg.cc/0y8MJz0T/ONE04780-(1).jpg" alt="Phil & Jasmine">
   <div class="couple-date-overlay">
     <p class="couple-date-text">2026 · September 12 · Taoyuan, Taiwan</p>
   </div>
@@ -331,22 +343,23 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
 <section id="details" style="background:var(--cream);padding:5rem 1.5rem">
   <div class="section-inner">
     <span class="section-tag fade-in">婚禮詳情 · Wedding Details</span>
+    <h2 class="section-h2 fade-in" style="font-size:clamp(22px,3vw,28px);color:var(--light);margin-bottom:0.3rem">婚禮場地 · Wedding Venue</h2>
     <h2 class="section-h2 fade-in" style="font-size:clamp(30px,5vw,44px)">花田盛事築夢莊園</h2>
     <span class="section-h2-en fade-in" style="display:block;margin-bottom:0.3rem">618 Puzhong Rd, Zhongli, Taoyuan · 桃園市中壢區普忠路618號</span>
-    <h2 class="section-h2 fade-in" style="font-size:clamp(36px,6vw,56px);color:var(--gold);margin-bottom:0.2rem">陽府囍宴</h2>
-    <span class="section-h2-en fade-in">Jasmine &amp; Phil's Wedding</span>
+
     <div class="details-vertical fade-in">
 
       <div class="detail-card-v">
         <div class="detail-card-v-left">
           <span class="detail-time-big">10:30</span>
-          <span class="detail-time-label">西式證婚儀式<br>Wedding Ceremony<br><span style="font-size:11px;color:var(--light)">10:00 入場</span></span>
+          <span class="detail-time-label">西式證婚儀式<br>Western Ceremony<br><span style="font-size:11px;color:var(--light)">10:00 入場</span></span>
         </div>
         <div class="detail-card-v-right">
           <p class="detail-venue-name">證婚廳</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--gold);letter-spacing:0.1em;margin-bottom:12px">— Ceremony by Invitation Only —</p>
           <p class="detail-venue-en">花田盛事築夢莊園</p>
           <p class="detail-venue-addr">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></p>
-          <div class="invited-note" style="margin-top:1rem">✦ 證婚儀式為親密小型儀式，感謝您的理解與祝福<br><span style="font-size:12px;color:var(--mid)">The ceremony is an intimate gathering — thank you for your warm wishes</span></div>
+          <div class="invited-note" style="margin-top:1rem">✦ 證婚儀式為小型溫馨儀式，因場地座位有限，將邀請部分親友共同見證。感謝您的理解與祝福。</div>
         </div>
       </div>
 
@@ -459,6 +472,20 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
     <div class="form-wrap fade-in">
       <div id="rsvpForm">
         <div class="field-group">
+          <label class="field-label">出席狀態 · Attendance <span style="color:var(--gold)">*</span></label>
+          <div class="attendance-group" id="attendanceGroup">
+            <label class="attend-item" onclick="selectAttendance(this, true)">
+              <span class="attend-dot"></span>
+              <span>我會出席 · I will attend 🎉</span>
+            </label>
+            <label class="attend-item" onclick="selectAttendance(this, false)">
+              <span class="attend-dot"></span>
+              <span>很遺憾無法出席 · Unable to attend</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
           <label class="field-label">出席者姓名 · Guest Name <span style="color:var(--gold)">*</span></label>
           <input type="text" id="f-name" placeholder="姓名 Full name">
         </div>
@@ -467,6 +494,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
           <input type="tel" id="f-phone" placeholder="手機號碼 Mobile number">
         </div>
         <div class="form-divider"></div>
+        <div class="attend-fields hidden" id="attendFields">
         <div class="field-group">
           <label class="field-label">出席人數 · Number of Guests</label>
           <span class="field-sub">含本人 · Including yourself</span>
@@ -477,6 +505,17 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
             <button type="button" class="counter-btn" onclick="changeCount('guest',1)">+</button>
           </div>
         </div>
+        <div class="field-group">
+          <label class="field-label">出席兒童人數 · Number of Children</label>
+          <span class="field-sub">12歲以下 · Under 12 years old</span>
+          <div class="counter-row">
+            <button type="button" class="counter-btn" onclick="changeCount('child',-1)">−</button>
+            <span class="counter-val" id="childVal">0</span>
+            <span class="counter-label">位兒童 · child(ren)</span>
+            <button type="button" class="counter-btn" onclick="changeCount('child',1)">+</button>
+          </div>
+        </div>
+
         <div class="field-group">
           <label class="field-label">素食人數 · Vegetarian Guests</label>
           <div class="counter-row">
@@ -513,6 +552,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
             <input type="text" id="f-address" placeholder="完整收件地址 Full mailing address" style="margin-top:8px">
           </div>
         </div>
+        </div><!-- end attend-fields -->
         <div class="form-divider"></div>
         <div class="field-group">
           <label class="field-label">給新人的祝福 · Message for Us</label>
@@ -529,7 +569,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         <div class="success-mark">✦</div>
         <h3 class="success-title">感謝您的回覆</h3>
         <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--gold);margin-bottom:1rem">Thank you for your RSVP</p>
-        <p class="success-sub">我們非常期待在婚禮上與您相聚<br>We look forward to celebrating with you on September 12th.<br><br>— Jasmine & Phil ♡</p>
+        <p class="success-sub">我們非常期待在婚禮上與您相聚<br>We look forward to celebrating with you on September 12th.<br><br>— Phil & Jasmine ♡</p>
       </div>
     </div>
   </div>
@@ -537,7 +577,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-names">Jasmine & Phil</p>
+  <p class="footer-names">Phil & Jasmine</p>
   <p class="footer-date">2026 · September 12 · Taoyuan, Taiwan</p>
   <div class="footer-line"></div>
   <p class="footer-copy">陽府囍宴 · Made with love</p>
@@ -597,12 +637,24 @@ function toggleAcc(btn){
 }
 
 // COUNTERS
-const counts={guest:1,veg:0,chair:0}
+const counts={guest:1,child:0,veg:0,chair:0}
 function changeCount(key,d){
   const min=key==='guest'?1:0
   const max=key==='guest'?20:10
   counts[key]=Math.max(min,Math.min(max,counts[key]+d))
   document.getElementById(key+'Val').textContent=counts[key]
+}
+
+// ATTENDANCE
+function selectAttendance(el, attending){
+  document.querySelectorAll('#attendanceGroup .attend-item').forEach(i=>i.classList.remove('selected'))
+  el.classList.add('selected')
+  const fields=document.getElementById('attendFields')
+  if(attending){
+    fields.classList.remove('hidden')
+  } else {
+    fields.classList.add('hidden')
+  }
 }
 
 // RADIO
@@ -629,16 +681,20 @@ function submitRSVP(){
   const blessing=document.getElementById('f-blessing').value.trim()
   const notes=document.getElementById('f-notes').value.trim()
 
+  const attendingEl=document.querySelector('#attendanceGroup .attend-item.selected')
+  const attending = attendingEl ? attendingEl.textContent.trim().includes('會出席') : true
+
   const payload={
     name: name,
     phone: phone,
-    guestCount: counts.guest,
-    vegCount: counts.veg,
-    chairCount: counts.chair,
-    needInvite: inviteEl ? inviteEl.value : '不需要',
-    address: address,
+    guestCount: attending ? counts.guest : 0,
+    childCount: attending ? counts.child : 0,
+    vegCount: attending ? counts.veg : 0,
+    chairCount: attending ? counts.chair : 0,
+    needInvite: attending ? (inviteEl ? inviteEl.value : '不需要') : '不需要',
+    address: attending ? address : '',
     blessing: blessing,
-    notes: notes
+    notes: (attending ? '' : '【無法出席】') + (notes ? notes : '')
   }
 
   fetch(FORM_URL, {
