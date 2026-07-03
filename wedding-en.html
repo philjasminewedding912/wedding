@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陽府囍宴 · Phil & Jasmine's Wedding · 2026.09.12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF7F2;
+  --ivory:#F5F0E8;
+  --gold:#B8975A;
+  --gold-light:#D4B87A;
+  --gold-pale:#EFE3C8;
+  --dark:#2C2318;
+  --mid:#3D2E1E;
+  --light:#6B5540;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'Noto Serif SC','Noto Serif TC',serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.4s,backdrop-filter 0.4s}
+nav.scrolled{background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--gold-pale)}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.2em;color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:13px;letter-spacing:0.2em;color:var(--mid);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:1px;background:var(--mid);transition:all 0.3s}
+
+/* HERO */
+.hero{height:100svh;min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-bottom:0}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,14,8,0.2) 0%,rgba(20,14,8,0.35) 25%,rgba(20,14,8,0.25) 45%,rgba(20,14,8,0.1) 60%,rgba(20,14,8,0.4) 100%)}
+.hero-content{position:relative;text-align:center;color:var(--white);padding:2rem;margin-top:-10%;width:100%;display:flex;flex-direction:column;align-items:center;left:0;right:0}
+.hero-eyebrow{font-size:18px;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,0.8);letter-spacing:0.35em;text-transform:uppercase;opacity:0.8;margin-bottom:1.5rem;font-family:'Cormorant Garamond',serif}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,11vw,120px);font-weight:300;line-height:1;letter-spacing:0.05em;margin-bottom:0.5rem;text-align:center;width:100%;display:block;margin-left:auto;margin-right:auto}
+.hero-names em{font-style:italic;font-weight:300}
+.hero-amp{font-size:0.6em;opacity:0.7;margin:0 0.3em;vertical-align:middle}
+.hero-zh{font-size:clamp(18px,2.8vw,24px);letter-spacing:0.3em;opacity:1;margin-bottom:2rem;font-weight:300;text-shadow:0 2px 12px rgba(0,0,0,0.8);text-align:center;width:100%}
+.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);letter-spacing:0.35em;opacity:1;border-top:1px solid rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.8);padding:0.8rem 2rem;display:inline-block;margin-top:1.5rem;text-shadow:0 2px 12px rgba(0,0,0,0.8)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.6}
+.scroll-hint span{font-size:12px;letter-spacing:0.2em;color:white;text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.5);animation:scrollpulse 2s ease-in-out infinite}
+@keyframes scrollpulse{0%,100%{opacity:0.3;transform:scaleY(0.6)}50%{opacity:1;transform:scaleY(1)}}
+
+
+/* ATTENDANCE */
+.attendance-group{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.attend-item{display:flex;align-items:center;gap:14px;cursor:pointer;padding:18px 22px;background:var(--ivory);border:1px solid var(--gold-pale);border-radius:4px;font-size:20px;color:var(--dark);transition:border-color 0.2s}
+.attend-item:hover{border-color:var(--gold)}
+.attend-item input{display:none}
+.attend-item.selected{border-color:var(--gold);background:var(--gold-pale)}
+.attend-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--gold-light);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.attend-item.selected .attend-dot::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--gold);display:block}
+.attend-fields{transition:opacity 0.3s}
+.attend-fields.hidden{display:none}
+
+/* COUNTDOWN */
+.countdown-section{background:var(--dark);padding:3rem 2rem;text-align:center}
+.countdown-label{font-size:16px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
+.countdown-grid{display:flex;justify-content:center;gap:1px;max-width:500px;margin:0 auto}
+.cd-item{flex:1;background:rgba(255,255,255,0.04);padding:2rem 0.5rem;position:relative}
+.cd-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:40%;background:rgba(184,151,90,0.3)}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,80px);font-weight:300;color:var(--white);line-height:1;display:block}
+.cd-unit{font-size:14px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-top:4px;display:block}
+.cd-unit-zh{font-size:14px;color:var(--light);margin-top:2px;display:block;letter-spacing:0.1em}
+
+/* SECTION BASE */
+section{padding:5rem 1.5rem}
+.section-inner{max-width:680px;margin:0 auto}
+.section-tag{font-size:16px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.divider{width:40px;height:0.5px;background:var(--gold);margin:2rem auto}
+.divider-left{margin-left:0}
+
+/* MESSAGE */
+.message-section{background:var(--ivory);padding-bottom:2rem}
+.message-zh{font-size:clamp(17px,2.5vw,20px);letter-spacing:0.05em;color:var(--mid);line-height:1.6;text-align:center;font-weight:300}
+.message-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,36px);font-style:italic;color:var(--dark);text-align:center;margin-bottom:2rem;letter-spacing:0.02em}
+.message-en{font-family:'EB Garamond',serif;font-size:clamp(17px,2.5vw,20px);color:var(--light);line-height:1.6;text-align:center;font-style:italic;margin-top:1.5rem}
+
+/* DETAILS */
+.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-pale);border:0.5px solid var(--gold-pale)}
+.detail-card{background:var(--cream);padding:2.5rem 2rem}
+.detail-badge{font-size:15px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.detail-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:0.3rem}
+.detail-title-en{font-size:13px;letter-spacing:0.15em;color:var(--light);margin-bottom:1.5rem;display:block;text-transform:uppercase}
+.detail-row{display:flex;gap:1rem;margin-bottom:0.8rem;align-items:flex-start}
+.detail-icon{font-size:13px;color:var(--gold);margin-top:2px;flex-shrink:0;width:16px}
+.detail-text{font-size:15px;color:var(--mid);line-height:1.7}
+.detail-text strong{color:var(--dark);font-weight:400;display:block;font-size:14px;letter-spacing:0.05em}
+.invited-note{margin-top:1.2rem;padding:0.8rem 1rem;background:var(--gold-pale);border-left:2px solid var(--gold);font-size:16px;color:var(--mid);letter-spacing:0.05em;line-height:1.7}
+
+
+/* DETAILS VERTICAL */
+.details-vertical{display:flex;flex-direction:column;gap:0;margin-top:2rem}
+.detail-card-v{display:flex;gap:2rem;align-items:flex-start;background:var(--white);border:0.5px solid var(--gold-pale);padding:2rem}
+.detail-card-v-left{flex:0 0 120px;text-align:center;border-right:0.5px solid var(--gold-pale);padding-right:1.5rem}
+.detail-time-big{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--gold);display:block;line-height:1}
+.detail-time-label{font-size:16px;color:var(--mid);letter-spacing:0.08em;line-height:1.6;display:block;margin-top:8px}
+.detail-card-v-right{flex:1}
+.detail-venue-name{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--dark);font-weight:400;margin-bottom:4px}
+.detail-venue-en{font-size:16px;color:var(--light);letter-spacing:0.1em;margin-bottom:12px}
+.detail-venue-addr{font-size:17px;color:var(--mid);line-height:1.8}
+.detail-timeline-dot{display:flex;flex-direction:column;align-items:center;padding:0.5rem 0;gap:0}
+.dot-line{width:1px;height:20px;background:var(--gold-pale);display:block}
+.dot-circle{font-size:16px;color:var(--gold);display:block;line-height:1}
+@media(max-width:640px){
+  .detail-card-v{flex-direction:column;gap:1rem}
+  .detail-card-v-left{flex:none;border-right:none;border-bottom:0.5px solid var(--gold-pale);padding-right:0;padding-bottom:1rem;text-align:left}
+  .details-grid{grid-template-columns:1fr}
+}
+
+/* TRANSPORT */
+.transport-section{background:var(--dark)}
+.transport-section .section-tag{color:var(--gold-light)}
+.transport-section h2{color:var(--white)}
+.accordion{margin-top:1.5rem}
+.acc-item{border-bottom:0.5px solid rgba(184,151,90,0.2)}
+.acc-btn{width:100%;text-align:left;padding:1.2rem 0;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--white)}
+.acc-btn-text{font-size:18px;letter-spacing:0.1em;color:var(--gold-light)}
+.acc-btn-en{font-size:15px;color:var(--light);margin-top:2px;display:block;letter-spacing:0.05em}
+.acc-arrow{width:16px;height:16px;color:var(--gold);flex-shrink:0;transition:transform 0.3s}
+.acc-arrow.open{transform:rotate(180deg)}
+.acc-body{display:none;padding-bottom:1.2rem}
+.acc-body.open{display:block}
+.acc-body p{font-size:17px;color:var(--light);line-height:2;letter-spacing:0.05em}
+.acc-body p + p{margin-top:0.5rem}
+.acc-body strong{color:var(--gold-light);font-weight:400}
+.map-btn{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;padding:14px 28px;border:0.5px solid var(--gold);color:var(--gold);font-size:16px;letter-spacing:0.15em;text-decoration:none;text-transform:uppercase;transition:background 0.2s,color 0.2s}
+.map-btn:hover{background:var(--gold);color:var(--dark)}
+
+/* LINE */
+.line-section{background:var(--ivory);text-align:center}
+.line-card{display:inline-block;background:var(--white);border:0.5px solid var(--gold-pale);padding:2.5rem 3rem;margin-top:2rem}
+.line-qr-placeholder{width:160px;height:160px;background:var(--ivory);border:1px dashed var(--gold-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:11px;color:var(--light);letter-spacing:0.1em;text-align:center;line-height:1.8}
+.line-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--dark);margin-bottom:0.3rem}
+.line-desc{font-size:14px;color:var(--mid);letter-spacing:0.05em;line-height:1.8}
+.line-features{display:flex;gap:1.5rem;justify-content:center;margin-top:1.2rem;flex-wrap:wrap}
+.line-feat{font-size:13px;color:var(--light);letter-spacing:0.1em;display:flex;align-items:center;gap:4px}
+.line-feat::before{content:'✦';color:var(--gold);font-size:8px}
+
+/* RSVP */
+.rsvp-section{background:var(--cream)}
+.rsvp-section h2{text-align:center}
+.form-wrap{background:var(--white);border:0.5px solid var(--gold-pale);padding:2.5rem 2rem;margin-top:2rem}
+.field-group{margin-bottom:1.5rem}
+.field-label{display:block;font-size:20px;letter-spacing:0.15em;text-transform:uppercase;color:#5C4A00;margin-bottom:8px}
+.field-sub{font-size:17px;color:#3D2E1E;letter-spacing:0.05em;margin-bottom:6px;display:block;font-style:italic}
+input[type=text],input[type=tel],textarea,select{width:100%;background:var(--ivory);border:1px solid var(--gold);border-radius:4px;padding:16px 20px;font-size:20px;font-family:'Noto Serif SC','Noto Serif TC',serif;color:var(--dark);outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none}
+input:focus,textarea:focus,select:focus{border-color:var(--gold)}
+input::placeholder,textarea::placeholder{color:var(--light)}
+textarea{resize:vertical;min-height:90px;line-height:1.8}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.counter-row{display:flex;align-items:center;gap:12px;background:var(--ivory);border:0.5px solid var(--gold-pale);padding:8px 14px}
+.counter-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold-pale);background:transparent;color:var(--gold);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:sans-serif;transition:background 0.15s}
+.counter-btn:hover{background:var(--gold-pale)}
+.counter-val{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--dark);min-width:28px;text-align:center}
+.counter-label{font-size:20px;color:var(--light);flex:1}
+.radio-group,.check-group{display:flex;flex-direction:column;gap:6px}
+.radio-item,.check-item{display:flex;align-items:center;gap:14px;cursor:pointer;padding:16px 20px;background:var(--ivory);border:1px solid var(--gold-pale);border-radius:4px;font-size:20px;color:var(--dark);transition:border-color 0.2s}
+.radio-item:hover,.check-item:hover{border-color:var(--gold)}
+.radio-item input,.check-item input{display:none}
+.radio-item.selected,.check-item.selected{border-color:var(--gold);background:var(--gold-pale)}
+.radio-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--gold-light);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.radio-item.selected .radio-dot::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--gold);display:block}
+.check-box{width:12px;height:12px;border:1px solid var(--gold-light);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.check-item.selected .check-box::after{content:'✓';font-size:16px;color:var(--gold);line-height:1}
+.address-field{display:none;margin-top:8px}
+.address-field.show{display:block}
+.submit-btn{width:100%;padding:22px;background:var(--dark);color:var(--gold-pale);border:none;font-size:20px;font-family:'Noto Serif SC','Noto Serif TC',serif;letter-spacing:0.3em;cursor:pointer;margin-top:2rem;transition:background 0.2s;text-transform:uppercase}
+.submit-btn:hover{background:var(--gold)}
+.form-divider{width:100%;height:0.5px;background:var(--gold-pale);margin:1.5rem 0}
+.success-wrap{display:none;text-align:center;padding:3rem 1rem}
+.success-mark{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);line-height:1;margin-bottom:1rem}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--dark);margin-bottom:0.5rem}
+.success-sub{font-size:13px;color:var(--mid);line-height:2;letter-spacing:0.05em}
+
+
+/* COUPLE PHOTO */
+.couple-photo-section{background:var(--cream);padding:0;margin-top:-1rem}
+.couple-full-img{width:100%;max-height:800px;object-fit:contain;display:block;background:var(--ivory)}
+.couple-date-overlay{text-align:center;padding:2rem 1.5rem 0;background:var(--cream)}
+.couple-date-text{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,2vw,16px);letter-spacing:0.4em;color:var(--gold);text-transform:uppercase}
+
+/* COUPLE INTRO */
+.couple-intro-section{background:var(--cream);padding:4rem 1.5rem}
+.couple-intro-grid{display:flex;align-items:flex-start;justify-content:center;gap:3rem;flex-wrap:wrap}
+.person-card{text-align:center;flex:0 0 220px}
+.person-avatar{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:center 10%;border:3px solid var(--gold-pale);display:block;margin:0 auto 1rem;overflow:hidden}
+.person-role{font-size:15px;letter-spacing:0.15em;color:var(--gold);font-family:'Noto Serif SC','Noto Serif TC',serif;font-style:normal;margin-bottom:8px}
+.person-name-en{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--dark);letter-spacing:0.05em}
+.person-name-zh{font-size:20px;color:var(--mid);letter-spacing:0.15em;margin-top:6px}
+.couple-heart{font-size:24px;color:var(--gold);flex:0 0 auto;margin-top:220px}
+
+/* FOOTER */
+footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
+.footer-names{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--gold-light);margin-bottom:0.5rem}
+.footer-date{font-size:13px;letter-spacing:0.3em;color:var(--light);margin-bottom:1.5rem;text-transform:uppercase}
+.footer-line{width:40px;height:0.5px;background:rgba(184,151,90,0.4);margin:0 auto 1.5rem}
+.footer-copy{font-size:12px;letter-spacing:0.15em;color:rgba(156,139,115,0.5)}
+
+/* HEADINGS */
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,44px);font-weight:300;color:var(--dark);line-height:1.2;margin-bottom:0.3rem}
+.section-h2-en{font-size:13px;letter-spacing:0.2em;color:var(--light);text-transform:uppercase;margin-bottom:2rem;display:block}
+
+/* MOBILE */
+@media(max-width:640px){
+  .nav-links{display:none;position:fixed;inset:0;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:flex;z-index:101}
+  .details-grid{grid-template-columns:1fr}
+  .row-2{grid-template-columns:1fr}
+  .form-wrap{padding:1.5rem 1rem}
+  .line-card{padding:2rem 1.5rem}
+}
+
+
+@media(max-width:640px){
+  .couple-intro-grid{flex-direction:column;gap:1rem}
+  .couple-heart{transform:rotate(90deg);margin:0}
+  .person-avatar-wrap{width:180px;height:180px}
+}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease}
+.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <span class="nav-brand">J & P · 2026</span>
+  <div class="nav-links" id="navLinks">
+    <a href="#message" onclick="closeNav()">關於我們 About</a>
+    <a href="#details" onclick="closeNav()">婚禮詳情 Details</a>
+    <a href="#transport" onclick="closeNav()">交通 Getting Here</a>
+    <a href="#line" onclick="closeNav()">LINE</a>
+    <a href="#rsvp" onclick="closeNav()">出席回函 RSVP</a>
+  </div>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="選單">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <img class="hero-bg" id="heroBg" src="https://i.postimg.cc/TwVVVZBK/S-149823500.jpg" alt="Phil & Jasmine">
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-in">
+    <p class="hero-eyebrow" style="font-size:clamp(40px,6vw,68px);letter-spacing:0.2em;font-family:'Noto Serif SC','Noto Serif TC',serif;font-weight:500;margin-bottom:0.8rem;opacity:1;text-shadow:0 2px 16px rgba(0,0,0,0.7);text-align:center">陽府囍宴</p>
+    <p class="hero-eyebrow" style="font-size:clamp(12px,1.5vw,16px);letter-spacing:0.3em;margin-bottom:1.5rem">Wedding Celebration</p>
+    <h1 class="hero-names" style="display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:0;gap:0.3em">
+      <em style="flex:1;text-align:right">Phil</em>
+      <span class="hero-amp" style="flex:0 0 auto;text-align:center">&</span>
+      <em style="flex:1;text-align:left">Jasmine</em>
+    </h1>
+    <p class="hero-zh" style="display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:0;gap:0.3em;font-size:clamp(22px,3.5vw,32px)">
+      <span style="flex:1;text-align:right">何瑞明</span>
+      <span style="flex:0 0 auto;text-align:center">·</span>
+      <span style="flex:1;text-align:left">陽忻穎</span>
+    </p>
+    <p class="hero-date">2026年9月12日</p>
+    <p style="font-size:clamp(16px,2.5vw,20px);letter-spacing:0.2em;color:rgba(255,255,255,1);margin-top:0.8rem;font-family:'Noto Serif SC','Noto Serif TC',serif;text-shadow:0 2px 12px rgba(0,0,0,0.8)">花田盛事築夢莊園 · 桃園中壢</p>
+    <p style="font-size:clamp(11px,1.5vw,13px);letter-spacing:0.15em;color:rgba(255,255,255,0.6);margin-top:0.4rem;font-family:'Noto Serif SC','Noto Serif TC',serif">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></p>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-section">
+  <p class="countdown-label">距離婚禮 · Days Until We Say I Do</p>
+  <div class="countdown-grid">
+    <div class="cd-item"><span class="cd-num" id="cd-days">—</span><span class="cd-unit">Days</span><span class="cd-unit-zh">天</span></div>
+    <div class="cd-item"><span class="cd-num" id="cd-hours">—</span><span class="cd-unit">Hours</span><span class="cd-unit-zh">時</span></div>
+    <div class="cd-item"><span class="cd-num" id="cd-mins">—</span><span class="cd-unit">Mins</span><span class="cd-unit-zh">分</span></div>
+    <div class="cd-item"><span class="cd-num" id="cd-secs">—</span><span class="cd-unit">Secs</span><span class="cd-unit-zh">秒</span></div>
+  </div>
+</div>
+
+<!-- MESSAGE -->
+<section class="message-section" id="message">
+  <div class="section-inner fade-in" style="text-align:center">
+    <span class="section-tag">致我們親愛的賓客</span>
+    <div class="divider"></div>
+    <p class="message-zh">
+      親愛的家人、朋友、叔叔阿姨們，大家好！<br><br>
+      以前總覺得，婚禮是向世界宣告愛情。<br>
+      直到真正走到這一天才發現，<br>
+      婚禮其實是一場難得的相聚。<br><br>
+      有人從遠方而來，<br>
+      有人特地空出一天，<br>
+      也有人看著我們長大，<br>
+      陪伴我們走過人生不同的階段。<br><br>
+      人的一生有三萬多天，<br>
+      而我們很希望，<br>
+      能在這一天與您相聚，<br>
+      一起留下快樂而美好的回憶。<br><br>
+      <strong style="color:var(--gold);font-weight:400;font-size:1.05em">好久不見，我們婚禮見！</strong>
+    </p>
+    <p class="message-en">
+      Hello Everyone,<br>
+      One of our favourite things about planning this wedding<br>
+      has been imagining everyone together in one place.<br><br>
+      Family who've watched us grow.<br>
+      Friends who've shared so many moments with us.<br>
+      Loved ones travelling from near and far to celebrate with us.<br><br>
+      It's not every day that the people we love are all in one place.<br>
+      To us, that's what makes this day so special.<br><br>
+      Let's eat well, laugh loudly,<br>
+      hug a little longer than usual,<br>
+      make some wonderful memories together...<br>
+      and embrace a little wedding-day chaos along the way.<br><br>
+      See you in September! 🤍<br>
+      <em style="font-family:'Cormorant Garamond',serif;font-size:1.1em;color:var(--gold)">Phil &amp; Jasmine</em>
+    </p>
+
+  </div>
+</section>
+
+
+<!-- COUPLE PHOTO -->
+<div class="couple-photo-section">
+  <img class="couple-full-img fade-in" src="https://i.postimg.cc/0y8MJz0T/ONE04780-(1).jpg" alt="Phil & Jasmine">
+  <div class="couple-date-overlay">
+    <p class="couple-date-text">2026 · September 12 · Taoyuan, Taiwan</p>
+  </div>
+</div>
+
+<!-- COUPLE INTRO -->
+<section class="couple-intro-section">
+  <div class="section-inner">
+    <div class="couple-intro-grid fade-in">
+      <div class="person-card">
+        <div style="width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid var(--gold-pale);margin:0 auto 1rem"><img src="https://i.postimg.cc/9QdGT39K/Chat-GPT-Image-Jun-15-2026-06-30-40-PM.png" alt="Phil Harris" style="width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
+        <p class="person-role">新郎 Groom</p>
+        <p class="person-name-en">Phil Harris</p>
+        <p class="person-name-zh">何瑞明</p>
+
+      </div>
+      <div class="couple-heart">♡</div>
+      <div class="person-card">
+        <div style="width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid var(--gold-pale);margin:0 auto 1rem"><img src="https://i.postimg.cc/ZqnZydsQ/Chat-GPT-Image-Jun-15-2026-08-47-40-PM.png" alt="Jasmine 陽忻穎" style="width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
+        <p class="person-role">新娘 Bride</p>
+        <p class="person-name-en">Jasmine</p>
+        <p class="person-name-zh">陽忻穎</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section id="details" style="background:var(--cream);padding:5rem 1.5rem">
+  <div class="section-inner">
+    <span class="section-tag fade-in">婚禮詳情 · Wedding Details</span>
+    <h2 class="section-h2 fade-in" style="font-size:clamp(22px,3vw,28px);color:var(--light);margin-bottom:0.3rem">婚禮場地 · Wedding Venue</h2>
+    <h2 class="section-h2 fade-in" style="font-size:clamp(30px,5vw,44px)">花田盛事築夢莊園</h2>
+    <span class="section-h2-en fade-in" style="display:block;margin-bottom:0.3rem">618 Puzhong Rd, Zhongli, Taoyuan · 桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></span>
+
+    <div class="details-vertical fade-in">
+
+      <div class="detail-card-v">
+        <div class="detail-card-v-left">
+          <span class="detail-time-big">12:00</span>
+          <span class="detail-time-label">午宴準時開席<br>Wedding Banquet<br><span style="font-size:11px;color:var(--light)">11:20 開始報到</span></span>
+        </div>
+        <div class="detail-card-v-right">
+          <p class="detail-venue-name">維多利亞廳</p>
+          <p class="detail-venue-en">花田盛事築夢莊園</p>
+          <p class="detail-venue-addr">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></p>
+          <p class="detail-venue-addr" style="margin-top:0.5rem">👗 著裝建議：正式或半正式 · Formal or semi-formal</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section class="transport-section" id="transport">
+  <div class="section-inner">
+    <span class="section-tag fade-in">前往方式 · Getting Here</span>
+    <h2 class="section-h2 fade-in" style="color:var(--white)">花田盛事築夢莊園</h2>
+    <span class="section-h2-en fade-in">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></span>
+    <div class="accordion fade-in">
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span><span class="acc-btn-text">🚗 開車 · By Car</span><span class="acc-btn-en">Highway · Freeway</span></span>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body">
+          <p><strong>國道一號</strong>：57-內壢交流道下，行駛約3.5公里即可抵達</p>
+          
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span><span class="acc-btn-text">🚆 火車 · By Train</span><span class="acc-btn-en">TRA Railway</span></span>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body">
+          <p>搭乘台鐵至<strong>中壢站</strong>或<strong>內壢站</strong>，轉搭計程車約7–8分鐘</p>
+          
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span><span class="acc-btn-text">🚌 公車 · By Bus</span><span class="acc-btn-en">Local Bus</span></span>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body">
+          <p>於<strong>營頭厝站</strong>下車 · 路線：155、156、167</p>
+          
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span><span class="acc-btn-text">🅿 停車 · Parking</span><span class="acc-btn-en">Free On-site Parking</span></span>
+          <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body">
+          <p>莊園內設有<strong>超大免費停車場</strong>，逾300個車位，遊覽車亦可停放</p>
+          
+        </div>
+      </div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span>" target="_blank">
+      ◎ 打開地圖 · Open Maps
+    </a>
+  </div>
+</section>
+
+<!-- LINE -->
+<section class="line-section" id="line">
+  <div class="section-inner fade-in">
+    <span class="section-tag">官方 LINE · Official LINE</span>
+    <h2 class="section-h2">請加入婚禮官方 LINE 掌握資訊</h2>
+    <span class="section-h2-en">Stay connected with us</span>
+    <div class="line-card">
+      <div style="width:180px;height:180px;border:2px solid var(--gold-pale);border-radius:8px;padding:10px;background:white;margin:0 auto 1.2rem;box-shadow:0 4px 20px rgba(184,151,90,0.15)">
+        <img src="https://i.postimg.cc/25WFrZcV/688BC512-1C14-4A94-BF22-FE5D5029CD1D.png" alt="LINE Official QR Code" style="width:100%;height:100%;object-fit:contain;display:block">
+      </div>
+      <p class="line-name">陽府囍宴 · Phil ♡ Jas</p>
+      <p class="line-desc" style="margin-bottom:1rem">手機長按 QR Code 即可加入<br>或搜尋 LINE ID：<strong style="color:var(--gold);font-size:16px;letter-spacing:0.1em">@950fgrvl</strong></p>
+      <div class="line-features">
+        <span class="line-feat">查詢座位</span>
+        <span class="line-feat">Seat Lookup</span>
+        <span class="line-feat">交通指引</span>
+        <span class="line-feat">Directions</span>
+        <span class="line-feat">婚禮照片</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp-section" id="rsvp">
+  <div class="section-inner">
+    <span class="section-tag fade-in" style="text-align:center;display:block">出席回函 · RSVP</span>
+    <h2 class="section-h2 fade-in" style="text-align:center">請於 2026年7月30日 前回覆</h2>
+    <span class="section-h2-en fade-in" style="text-align:center;display:block">Kindly reply by July 30, 2026</span>
+    <div class="form-wrap fade-in">
+      <div id="rsvpForm">
+        <div class="field-group">
+          <label class="field-label">出席狀態 · Attendance <span style="color:var(--gold)">*</span></label>
+          <div class="attendance-group" id="attendanceGroup">
+            <label class="attend-item" onclick="selectAttendance(this, true)">
+              <span class="attend-dot"></span>
+              <span>我會出席 · I will attend 🎉</span>
+            </label>
+            <label class="attend-item" onclick="selectAttendance(this, false)">
+              <span class="attend-dot"></span>
+              <span>很遺憾無法出席 · Unable to attend</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">出席者姓名 · Guest Name <span style="color:var(--gold)">*</span></label>
+          <input type="text" id="f-name" placeholder="姓名 Full name">
+        </div>
+        <div class="field-group">
+          <label class="field-label">聯絡電話 · Phone Number <span style="color:var(--gold)">*</span></label>
+          <input type="tel" id="f-phone" placeholder="手機號碼 Mobile number">
+        </div>
+        <div class="form-divider"></div>
+        <div class="attend-fields hidden" id="attendFields">
+        <div class="field-group">
+          <label class="field-label">出席人數 · Number of Guests</label>
+          <span class="field-sub">含本人 · Including yourself</span>
+          <div class="counter-row">
+            <button type="button" class="counter-btn" onclick="changeCount('guest',-1)">−</button>
+            <span class="counter-val" id="guestVal">1</span>
+            <span class="counter-label">位 · guest(s)</span>
+            <button type="button" class="counter-btn" onclick="changeCount('guest',1)">+</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">出席兒童人數 · Number of Children</label>
+          <span class="field-sub">12歲以下 · Under 12 years old</span>
+          <div class="counter-row">
+            <button type="button" class="counter-btn" onclick="changeCount('child',-1)">−</button>
+            <span class="counter-val" id="childVal">0</span>
+            <span class="counter-label">位兒童 · child(ren)</span>
+            <button type="button" class="counter-btn" onclick="changeCount('child',1)">+</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">素食人數 · Vegetarian Guests</label>
+          <div class="counter-row">
+            <button type="button" class="counter-btn" onclick="changeCount('veg',-1)">−</button>
+            <span class="counter-val" id="vegVal">0</span>
+            <span class="counter-label">位 · guest(s)</span>
+            <button type="button" class="counter-btn" onclick="changeCount('veg',1)">+</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">兒童椅需求 · High Chair</label>
+          <div class="counter-row">
+            <button type="button" class="counter-btn" onclick="changeCount('chair',-1)">−</button>
+            <span class="counter-val" id="chairVal">0</span>
+            <span class="counter-label">張 · chair(s)</span>
+            <button type="button" class="counter-btn" onclick="changeCount('chair',1)">+</button>
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="field-group">
+          <label class="field-label">紙本喜帖 · Paper Invitation</label>
+          <span class="field-sub">是否需要寄送紙本喜帖？· Would you like a paper invitation?</span>
+          <div class="radio-group" id="inviteGroup">
+            <label class="radio-item" onclick="selectRadio(this,'inviteGroup');toggleAddress(false)">
+              <input type="radio" name="invite" value="no"><span class="radio-dot"></span>
+              <span>不需要 · No, thank you</span>
+            </label>
+            <label class="radio-item" onclick="selectRadio(this,'inviteGroup');toggleAddress(true)">
+              <input type="radio" name="invite" value="yes"><span class="radio-dot"></span>
+              <span>需要，請寄至以下地址 · Yes, please send to:</span>
+            </label>
+          </div>
+          <div class="address-field" id="addressField">
+            <input type="text" id="f-address" placeholder="完整收件地址 Full mailing address" style="margin-top:8px">
+          </div>
+        </div>
+        </div><!-- end attend-fields -->
+        <div class="form-divider"></div>
+        <div class="field-group">
+          <label class="field-label">給新人的祝福 · Message for Us</label>
+          <span class="field-sub">用您最真誠的話語為我們祝福 · Share your warmest wishes ♡</span>
+          <textarea id="f-blessing" placeholder="寫下您的祝福… / Your message here…" rows="4"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">備註 · Additional Notes</label>
+          <input type="text" id="f-notes" placeholder="如有其他需求請填寫 · Any other requests">
+        </div>
+        <button class="submit-btn" onclick="submitRSVP()">確認出席 · Confirm Attendance</button>
+      </div>
+      <div class="success-wrap" id="successWrap">
+        <div class="success-mark">✦</div>
+        <h3 class="success-title">感謝您的回覆</h3>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--gold);margin-bottom:1rem">Thank you for your RSVP</p>
+        <p class="success-sub">我們非常期待在婚禮上與您相聚<br>We look forward to celebrating with you on September 12th.<br><br>— Phil & Jasmine ♡</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-names">Phil & Jasmine</p>
+  <p class="footer-date">2026 · September 12 · Taoyuan, Taiwan</p>
+  <div class="footer-line"></div>
+  <p class="footer-copy">陽府囍宴 · Made with love</p>
+</footer>
+
+<script>
+// NAV
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)
+})
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open')
+}
+function closeNav(){
+  document.getElementById('navLinks').classList.remove('open')
+}
+
+// parallax removed
+
+// COUNTDOWN
+function updateCountdown(){
+  const target=new Date('2026-09-12T11:00:00+08:00')
+  const now=new Date()
+  const diff=target-now
+  if(diff<=0){
+    document.getElementById('cd-days').textContent='0'
+    document.getElementById('cd-hours').textContent='0'
+    document.getElementById('cd-mins').textContent='0'
+    document.getElementById('cd-secs').textContent='0'
+    return
+  }
+  const d=Math.floor(diff/86400000)
+  const h=Math.floor((diff%86400000)/3600000)
+  const m=Math.floor((diff%3600000)/60000)
+  const s=Math.floor((diff%60000)/1000)
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0')
+  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0')
+  document.getElementById('cd-mins').textContent=String(m).padStart(2,'0')
+  document.getElementById('cd-secs').textContent=String(s).padStart(2,'0')
+}
+updateCountdown()
+setInterval(updateCountdown,1000)
+
+// FADE IN
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+},{threshold:0.15})
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el))
+document.querySelector('.hero .fade-in').classList.add('visible')
+
+// ACCORDION
+function toggleAcc(btn){
+  const body=btn.nextElementSibling
+  const arrow=btn.querySelector('.acc-arrow')
+  body.classList.toggle('open')
+  arrow.classList.toggle('open')
+}
+
+// COUNTERS
+const counts={guest:1,child:0,veg:0,chair:0}
+function changeCount(key,d){
+  const min=key==='guest'?1:0
+  const max=key==='guest'?20:10
+  counts[key]=Math.max(min,Math.min(max,counts[key]+d))
+  document.getElementById(key+'Val').textContent=counts[key]
+}
+
+// ATTENDANCE
+function selectAttendance(el, attending){
+  document.querySelectorAll('#attendanceGroup .attend-item').forEach(i=>i.classList.remove('selected'))
+  el.classList.add('selected')
+  const fields=document.getElementById('attendFields')
+  if(attending){
+    fields.classList.remove('hidden')
+  } else {
+    fields.classList.add('hidden')
+  }
+}
+
+// RADIO
+function selectRadio(el,groupId){
+  document.querySelectorAll('#'+groupId+' .radio-item').forEach(i=>i.classList.remove('selected'))
+  el.classList.add('selected')
+  el.querySelector('input').checked=true
+}
+
+// ADDRESS TOGGLE
+function toggleAddress(show){
+  document.getElementById('addressField').classList.toggle('show',show)
+}
+
+// SUBMIT → Google Form
+const FORM_URL='https://script.google.com/macros/s/AKfycbxSpJeJh5OMw3D_IELBwkmgvKQdFkpQ99KGfr9onbzUvZ833RHHsZTnegVEruJgRtJM0g/exec'
+function submitRSVP(){
+  const name=document.getElementById('f-name').value.trim()
+  const phone=document.getElementById('f-phone').value.trim()
+  if(!name){document.getElementById('f-name').style.borderColor='#B8975A';document.getElementById('f-name').focus();return}
+  if(!phone){document.getElementById('f-phone').style.borderColor='#B8975A';document.getElementById('f-phone').focus();return}
+  const inviteEl=document.querySelector('input[name="invite"]:checked')
+  const address=document.getElementById('f-address').value.trim()
+  const blessing=document.getElementById('f-blessing').value.trim()
+  const notes=document.getElementById('f-notes').value.trim()
+
+  const attendingEl=document.querySelector('#attendanceGroup .attend-item.selected')
+  const attending = attendingEl ? attendingEl.textContent.trim().includes('會出席') : true
+
+  const payload={
+    name: name,
+    phone: phone,
+    guestCount: attending ? counts.guest : 0,
+    childCount: attending ? counts.child : 0,
+    vegCount: attending ? counts.veg : 0,
+    chairCount: attending ? counts.chair : 0,
+    needInvite: attending ? (inviteEl ? inviteEl.value : '不需要') : '不需要',
+    address: attending ? address : '',
+    blessing: blessing,
+    notes: (attending ? '' : '【無法出席】') + (notes ? notes : '')
+  }
+
+  fetch(FORM_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  })
+
+  document.getElementById('rsvpForm').style.display='none'
+  document.getElementById('successWrap').style.display='block'
+}
+</script>
+</body>
+</html>
