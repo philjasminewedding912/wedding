@@ -33,16 +33,16 @@ nav.scrolled{background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border
 .nav-toggle span{display:block;width:22px;height:1px;background:var(--mid);transition:all 0.3s}
 
 /* HERO */
-.hero{height:100svh;min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,14,8,0.35) 0%,rgba(20,14,8,0.15) 40%,rgba(20,14,8,0.55) 100%)}
-.hero-content{position:relative;text-align:center;color:var(--white);padding:2rem}
-.hero-eyebrow{font-size:18px;letter-spacing:0.35em;text-transform:uppercase;opacity:0.8;margin-bottom:1.5rem;font-family:'Cormorant Garamond',serif}
-.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(60px,12vw,110px);font-weight:300;line-height:1;letter-spacing:0.05em;margin-bottom:0.5rem}
+.hero{height:100svh;min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-bottom:0}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,14,8,0.2) 0%,rgba(20,14,8,0.35) 25%,rgba(20,14,8,0.25) 45%,rgba(20,14,8,0.1) 60%,rgba(20,14,8,0.4) 100%)}
+.hero-content{position:relative;text-align:center;color:var(--white);padding:2rem;margin-top:-10%;width:100%;display:flex;flex-direction:column;align-items:center;left:0;right:0}
+.hero-eyebrow{font-size:18px;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,0.8);letter-spacing:0.35em;text-transform:uppercase;opacity:0.8;margin-bottom:1.5rem;font-family:'Cormorant Garamond',serif}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,11vw,120px);font-weight:300;line-height:1;letter-spacing:0.05em;margin-bottom:0.5rem;text-align:center;width:100%;display:block;margin-left:auto;margin-right:auto}
 .hero-names em{font-style:italic;font-weight:300}
 .hero-amp{font-size:0.6em;opacity:0.7;margin:0 0.3em;vertical-align:middle}
-.hero-zh{font-size:clamp(16px,2.5vw,20px);letter-spacing:0.3em;opacity:0.75;margin-bottom:2rem;font-weight:300}
-.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,22px);letter-spacing:0.35em;opacity:1;border-top:1px solid rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.6);padding:0.8rem 2.5rem;display:inline-block;margin-top:1.5rem}
+.hero-zh{font-size:clamp(18px,2.8vw,24px);letter-spacing:0.3em;opacity:1;margin-bottom:2rem;font-weight:300;text-shadow:0 2px 12px rgba(0,0,0,0.8);text-align:center;width:100%}
+.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);letter-spacing:0.35em;opacity:1;border-top:1px solid rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.8);padding:0.8rem 2rem;display:inline-block;margin-top:1.5rem;text-shadow:0 2px 12px rgba(0,0,0,0.8)}
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.6}
 .scroll-hint span{font-size:12px;letter-spacing:0.2em;color:white;text-transform:uppercase}
 .scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.5);animation:scrollpulse 2s ease-in-out infinite}
@@ -253,13 +253,21 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
   <img class="hero-bg" id="heroBg" src="https://i.postimg.cc/TwVVVZBK/S-149823500.jpg" alt="Phil & Jasmine">
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
-    <p class="hero-eyebrow" style="font-size:clamp(32px,5vw,56px);letter-spacing:0.2em;font-family:'Noto Serif SC','Noto Serif TC',serif;font-weight:500;margin-bottom:0.8rem;opacity:1;text-shadow:0 2px 12px rgba(0,0,0,0.3)">陽府囍宴</p>
+    <p class="hero-eyebrow" style="font-size:clamp(40px,6vw,68px);letter-spacing:0.2em;font-family:'Noto Serif SC','Noto Serif TC',serif;font-weight:500;margin-bottom:0.8rem;opacity:1;text-shadow:0 2px 16px rgba(0,0,0,0.7);text-align:center">陽府囍宴</p>
     <p class="hero-eyebrow" style="font-size:clamp(12px,1.5vw,16px);letter-spacing:0.3em;margin-bottom:1.5rem">Wedding Celebration</p>
-    <h1 class="hero-names"><em>Phil</em> <span class="hero-amp">&</span> <em>Jasmine</em></h1>
-    <p class="hero-zh">何瑞明 · 陽忻穎</p>
+    <h1 class="hero-names" style="display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:0;gap:0.3em">
+      <em style="flex:1;text-align:right">Phil</em>
+      <span class="hero-amp" style="flex:0 0 auto;text-align:center">&</span>
+      <em style="flex:1;text-align:left">Jasmine</em>
+    </h1>
+    <p class="hero-zh" style="display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:0;gap:0.3em;font-size:clamp(22px,3.5vw,32px)">
+      <span style="flex:1;text-align:right">何瑞明</span>
+      <span style="flex:0 0 auto;text-align:center">·</span>
+      <span style="flex:1;text-align:left">陽忻穎</span>
+    </p>
     <p class="hero-date">2026年9月12日</p>
-    <p style="font-size:clamp(13px,2vw,16px);letter-spacing:0.2em;color:rgba(255,255,255,0.85);margin-top:0.8rem;font-family:'Noto Serif SC','Noto Serif TC',serif">花田盛事築夢莊園 · 桃園中壢</p>
-    <p style="font-size:clamp(11px,1.5vw,13px);letter-spacing:0.15em;color:rgba(255,255,255,0.6);margin-top:0.4rem;font-family:'Noto Serif SC','Noto Serif TC',serif">桃園市中壢區普忠路618號</p>
+    <p style="font-size:clamp(16px,2.5vw,20px);letter-spacing:0.2em;color:rgba(255,255,255,1);margin-top:0.8rem;font-family:'Noto Serif SC','Noto Serif TC',serif;text-shadow:0 2px 12px rgba(0,0,0,0.8)">花田盛事築夢莊園 · 桃園中壢</p>
+    <p style="font-size:clamp(11px,1.5vw,13px);letter-spacing:0.15em;color:rgba(255,255,255,0.6);margin-top:0.4rem;font-family:'Noto Serif SC','Noto Serif TC',serif">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></p>
   </div>
   <div class="scroll-hint">
     <span>Scroll</span>
@@ -314,6 +322,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
       See you in September! 🤍<br>
       <em style="font-family:'Cormorant Garamond',serif;font-size:1.1em;color:var(--gold)">Phil &amp; Jasmine</em>
     </p>
+
   </div>
 </section>
 
@@ -336,7 +345,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         <p class="person-name-en">Phil Harris</p>
         <p class="person-name-zh">何瑞明</p>
         <p style="font-size:16px;letter-spacing:0.2em;color:var(--gold);margin-top:1.2rem;margin-bottom:6px;font-family:'Noto Serif SC','Noto Serif TC',serif">主婚人</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mid);line-height:2;white-space:nowrap">Khim Harris · Eugenie Harris<br>Katherine Akkermans · Mike Akkermans</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--mid);line-height:2;white-space:nowrap">Khim Harris ・ Katherine Akkermans</p>
       </div>
       <div class="couple-heart">♡</div>
       <div class="person-card">
@@ -357,7 +366,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
     <span class="section-tag fade-in">婚禮詳情 · Wedding Details</span>
     <h2 class="section-h2 fade-in" style="font-size:clamp(22px,3vw,28px);color:var(--light);margin-bottom:0.3rem">婚禮場地 · Wedding Venue</h2>
     <h2 class="section-h2 fade-in" style="font-size:clamp(30px,5vw,44px)">花田盛事築夢莊園</h2>
-    <span class="section-h2-en fade-in" style="display:block;margin-bottom:0.3rem">618 Puzhong Rd, Zhongli, Taoyuan · 桃園市中壢區普忠路618號</span>
+    <span class="section-h2-en fade-in" style="display:block;margin-bottom:0.3rem">618 Puzhong Rd, Zhongli, Taoyuan · 桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></span>
 
     <div class="details-vertical fade-in">
 
@@ -383,7 +392,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
   <div class="section-inner">
     <span class="section-tag fade-in">前往方式 · Getting Here</span>
     <h2 class="section-h2 fade-in" style="color:var(--white)">花田盛事築夢莊園</h2>
-    <span class="section-h2-en fade-in">桃園市中壢區普忠路618號</span>
+    <span class="section-h2-en fade-in">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></span>
     <div class="accordion fade-in">
       <div class="acc-item">
         <button class="acc-btn" onclick="toggleAcc(this)">
@@ -392,7 +401,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         </button>
         <div class="acc-body">
           <p><strong>國道一號</strong>：57-內壢交流道下，行駛約3.5公里即可抵達</p>
-          <p>Take <strong>Freeway No.1</strong>, exit at Nèilì (Exit 57), then drive approx. 3.5 km.</p>
+          
         </div>
       </div>
       <div class="acc-item">
@@ -402,7 +411,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         </button>
         <div class="acc-body">
           <p>搭乘台鐵至<strong>中壢站</strong>或<strong>內壢站</strong>，轉搭計程車約7–8分鐘</p>
-          <p>Take TRA to <strong>Zhongli Station</strong> or <strong>Nèilì Station</strong>, then taxi approx. 7–8 min.</p>
+          
         </div>
       </div>
       <div class="acc-item">
@@ -412,7 +421,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         </button>
         <div class="acc-body">
           <p>於<strong>營頭厝站</strong>下車 · 路線：155、156、167</p>
-          <p>Alight at <strong>Yíngtóucuò Stop</strong> · Routes: 155, 156, 167</p>
+          
         </div>
       </div>
       <div class="acc-item">
@@ -422,11 +431,11 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         </button>
         <div class="acc-body">
           <p>莊園內設有<strong>超大免費停車場</strong>，逾300個車位，遊覽車亦可停放</p>
-          <p>Free on-site parking with <strong>300+ spaces</strong>, including coach parking.</p>
+          
         </div>
       </div>
     </div>
-    <a class="map-btn" href="https://maps.google.com/?q=桃園市中壢區普忠路618號" target="_blank">
+    <a class="map-btn" href="https://maps.google.com/?q=桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span>" target="_blank">
       ◎ 打開地圖 · Open Maps
     </a>
   </div>
