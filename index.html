@@ -27,7 +27,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:
 nav.scrolled{background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--gold-pale)}
 .nav-brand{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.2em;color:var(--gold);font-style:italic}
 .nav-links{display:flex;gap:2rem}
-.nav-links a{font-size:13px;letter-spacing:0.2em;color:var(--mid);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+.nav-links a{font-size:15px;letter-spacing:0.18em;color:var(--mid);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--gold)}
 .nav-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px}
 .nav-toggle span{display:block;width:22px;height:1px;background:var(--mid);transition:all 0.3s}
@@ -41,8 +41,8 @@ nav.scrolled{background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border
 .hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,11vw,120px);font-weight:300;line-height:1;letter-spacing:0.05em;margin-bottom:0.5rem;text-align:center;width:100%;display:block;margin-left:auto;margin-right:auto}
 .hero-names em{font-style:italic;font-weight:300}
 .hero-amp{font-size:0.6em;opacity:0.7;margin:0 0.3em;vertical-align:middle}
-.hero-zh{font-size:clamp(18px,2.8vw,24px);letter-spacing:0.3em;opacity:1;margin-bottom:2rem;font-weight:300;text-shadow:0 2px 12px rgba(0,0,0,0.8);text-align:center;width:100%}
-.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);letter-spacing:0.35em;opacity:1;border-top:1px solid rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.8);padding:0.8rem 2rem;display:inline-block;margin-top:1.5rem;text-shadow:0 2px 12px rgba(0,0,0,0.8)}
+.hero-zh{font-size:clamp(18px,2.8vw,24px);letter-spacing:0.3em;opacity:1;margin-bottom:2rem;font-weight:300;text-shadow:0 2px 16px rgba(0,0,0,0.95),0 0 30px rgba(0,0,0,0.5);text-align:center;width:100%}
+.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);letter-spacing:0.35em;opacity:1;border-top:1px solid rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.8);padding:0.8rem 2rem;display:inline-block;margin-top:1.5rem;text-shadow:0 2px 16px rgba(0,0,0,0.95),0 0 30px rgba(0,0,0,0.5)}
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.6}
 .scroll-hint span{font-size:12px;letter-spacing:0.2em;color:white;text-transform:uppercase}
 .scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.5);animation:scrollpulse 2s ease-in-out infinite}
@@ -141,7 +141,7 @@ section{padding:5rem 1.5rem}
 .line-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--dark);margin-bottom:0.3rem}
 .line-desc{font-size:14px;color:var(--mid);letter-spacing:0.05em;line-height:1.8}
 .line-features{display:flex;gap:1.5rem;justify-content:center;margin-top:1.2rem;flex-wrap:wrap}
-.line-feat{font-size:13px;color:var(--light);letter-spacing:0.1em;display:flex;align-items:center;gap:4px}
+.line-feat{font-size:16px;color:var(--light);letter-spacing:0.08em;display:flex;align-items:center;gap:4px}
 .line-feat::before{content:'✦';color:var(--gold);font-size:8px}
 
 /* RSVP */
@@ -242,7 +242,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
 
 <!-- NAV -->
 <nav id="nav">
-  <span class="nav-brand">J & P · 2026</span>
+  <span class="nav-brand">陽府囍宴</span>
   <div class="nav-links" id="navLinks">
     <a href="#message" onclick="closeNav()">關於我們 About</a>
     <a href="#details" onclick="closeNav()">婚禮詳情 Details</a>
@@ -260,7 +260,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
   <img class="hero-bg" id="heroBg" src="https://i.postimg.cc/TwVVVZBK/S-149823500.jpg" alt="Phil & Jasmine">
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
-    <p class="hero-eyebrow" style="font-size:clamp(40px,6vw,68px);letter-spacing:0.2em;font-family:'Noto Serif SC','Noto Serif TC',serif;font-weight:500;margin-bottom:0.8rem;opacity:1;text-shadow:0 2px 16px rgba(0,0,0,0.7);text-align:center">陽府囍宴</p>
+    <p class="hero-eyebrow" style="font-size:clamp(40px,6vw,68px);letter-spacing:0.2em;font-family:'Noto Serif SC','Noto Serif TC',serif;font-weight:500;margin-bottom:0.8rem;opacity:1;text-shadow:0 2px 20px rgba(0,0,0,0.9),0 0 40px rgba(0,0,0,0.5);text-align:center">陽府囍宴</p>
     <p class="hero-eyebrow" style="font-size:clamp(12px,1.5vw,16px);letter-spacing:0.3em;margin-bottom:1.5rem">Wedding Celebration</p>
     <h1 class="hero-names" style="display:flex;align-items:center;justify-content:center;width:100%;margin:0;padding:0;gap:0.3em">
       <em style="flex:1;text-align:right">Phil</em>
@@ -273,7 +273,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
       <span style="flex:1;text-align:left">陽忻穎</span>
     </p>
     <p class="hero-date">2026年9月12日</p>
-    <p style="font-size:clamp(16px,2.5vw,20px);letter-spacing:0.2em;color:rgba(255,255,255,1);margin-top:0.8rem;font-family:'Noto Serif SC','Noto Serif TC',serif;text-shadow:0 2px 12px rgba(0,0,0,0.8)">花田盛事築夢莊園 · 桃園中壢</p>
+    <p style="font-size:clamp(16px,2.5vw,20px);letter-spacing:0.2em;color:rgba(255,255,255,1);margin-top:0.8rem;font-family:'Noto Serif SC','Noto Serif TC',serif;text-shadow:0 2px 16px rgba(0,0,0,0.95),0 0 30px rgba(0,0,0,0.5)">花田盛事築夢莊園 · 桃園中壢</p>
     <p style="font-size:clamp(11px,1.5vw,13px);letter-spacing:0.15em;color:rgba(255,255,255,0.6);margin-top:0.4rem;font-family:'Noto Serif SC','Noto Serif TC',serif">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></p>
   </div>
   <div class="scroll-hint">
@@ -442,7 +442,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         </div>
       </div>
     </div>
-    <a class="map-btn" href="https://maps.google.com/?q=桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span>" target="_blank">
+    <a class="map-btn" href="https://maps.google.com/?q=桃園市中壢區普忠路618號" target="_blank">
       ◎ 打開地圖 · Open Maps
     </a>
   </div>
@@ -455,12 +455,12 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
     <h2 class="section-h2">請加入婚禮官方 LINE 掌握資訊</h2>
     <span class="section-h2-en">Stay connected with us</span>
     <div class="line-card">
-      <div style="width:180px;height:180px;border:2px solid var(--gold-pale);border-radius:8px;padding:10px;background:white;margin:0 auto 1.2rem;box-shadow:0 4px 20px rgba(184,151,90,0.15)">
+      <div style="width:220px;height:220px;border:2px solid var(--gold-pale);border-radius:8px;padding:10px;background:white;margin:0 auto 1.2rem;box-shadow:0 4px 20px rgba(184,151,90,0.15)">
         <img src="https://i.postimg.cc/25WFrZcV/688BC512-1C14-4A94-BF22-FE5D5029CD1D.png" alt="LINE Official QR Code" style="width:100%;height:100%;object-fit:contain;display:block">
       </div>
-      <p class="line-name">陽府囍宴 · Phil ♡ Jas</p>
+      <p class="line-name">9.12 陽府囍宴｜Phil & 陽忻穎</p>
       <p class="line-desc" style="margin-bottom:1rem">手機長按 QR Code 即可加入<br>或搜尋 LINE ID：<strong style="color:var(--gold);font-size:16px;letter-spacing:0.1em">@950fgrvl</strong></p>
-      <div class="line-features">
+      <div class="line-features" style="gap:1.2rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center">
         <span class="line-feat">查詢座位</span>
         <span class="line-feat">Seat Lookup</span>
         <span class="line-feat">交通指引</span>
