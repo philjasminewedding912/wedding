@@ -571,13 +571,26 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
           <label class="field-label">備註 · Additional Notes</label>
           <input type="text" id="f-notes" placeholder="如有其他需求請填寫 · Any other requests">
         </div>
-        <button class="submit-btn" onclick="submitRSVP()">確認出席 · Confirm Attendance</button>
+        <div style="background:var(--ivory);border:0.5px solid var(--gold-pale);border-radius:2px;padding:1rem 1.2rem;margin-bottom:1rem;font-size:13px;color:var(--mid);line-height:1.9;text-align:center">
+          📝 如需修改出席資訊，請重新填寫一次並在備註欄註明「更新」<br>
+          或聯繫 <strong style="color:var(--gold)">LINE @950fgrvl</strong><br>
+          <span style="font-size:12px;color:var(--light);font-style:italic">To update, resubmit with "Update" in notes · LINE @950fgrvl</span>
+        </div>
+        <button class="submit-btn" onclick="submitRSVP()">確認送出 · Submit</button>
       </div>
       <div class="success-wrap" id="successWrap">
         <div class="success-mark">✦</div>
         <h3 class="success-title">感謝您的回覆</h3>
         <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--gold);margin-bottom:1rem">Thank you for your RSVP</p>
-        <p class="success-sub">我們非常期待在婚禮上與您相聚<br>We look forward to celebrating with you on September 12th.<br><br>— Phil & Jasmine ♡</p>
+        <p class="success-sub">
+        我們非常期待在婚禮上與您相聚<br>
+        We look forward to celebrating with you on September 12th.<br><br>
+        如需修改出席資訊，請重新填寫一次<br>並在備註欄註明「更新」<br>
+        To update your RSVP, fill in the form again<br>and write "Update" in the notes.<br><br>
+        或直接聯繫我們 · Or contact us:<br>
+        <strong style="color:var(--gold);font-size:1.1em">LINE @950fgrvl</strong><br><br>
+        — Phil & Jasmine ♡
+      </p>
       </div>
     </div>
   </div>
