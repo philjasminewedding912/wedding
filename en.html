@@ -503,7 +503,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         <div class="attend-fields hidden" id="attendFields">
         <div class="field-group">
           <label class="field-label">出席人數 · Number of Guests</label>
-          <span class="field-sub">含本人 · Including yourself</span>
+          <span class="field-sub">含填寫者本人及所有同行者（包含所有年齡層孩童的總人數）<br>Including yourself and all guests of all ages (children included)</span>
           <div class="counter-row">
             <button type="button" class="counter-btn" onclick="changeCount('guest',-1)">−</button>
             <span class="counter-val" id="guestVal">1</span>
@@ -511,19 +511,9 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
             <button type="button" class="counter-btn" onclick="changeCount('guest',1)">+</button>
           </div>
         </div>
-        <div class="field-group">
-          <label class="field-label">出席兒童人數 · Number of Children</label>
-          <span class="field-sub">12歲以下 · Under 12 years old</span>
-          <div class="counter-row">
-            <button type="button" class="counter-btn" onclick="changeCount('child',-1)">−</button>
-            <span class="counter-val" id="childVal">0</span>
-            <span class="counter-label">位兒童 · child(ren)</span>
-            <button type="button" class="counter-btn" onclick="changeCount('child',1)">+</button>
-          </div>
-        </div>
-
-        <div class="field-group">
+<div class="field-group">
           <label class="field-label">素食人數 · Vegetarian Guests</label>
+          <span class="field-sub">出席人數中，需要素食餐點的共幾位 · Number of guests in your party requiring vegetarian meals</span>
           <div class="counter-row">
             <button type="button" class="counter-btn" onclick="changeCount('veg',-1)">−</button>
             <span class="counter-val" id="vegVal">0</span>
@@ -533,6 +523,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
         </div>
         <div class="field-group">
           <label class="field-label">兒童椅需求 · High Chair</label>
+          <span class="field-sub">出席人數中，需要兒童餐椅的孩童共幾位？<br>How many children in your party need a high chair?</span>
           <div class="counter-row">
             <button type="button" class="counter-btn" onclick="changeCount('chair',-1)">−</button>
             <span class="counter-val" id="chairVal">0</span>
