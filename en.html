@@ -108,7 +108,7 @@ section{padding:5rem 1.5rem}
 .detail-time-label{font-size:16px;color:var(--mid);letter-spacing:0.08em;line-height:1.6;display:block;margin-top:8px}
 .detail-card-v-right{flex:1}
 .detail-venue-name{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--dark);font-weight:400;margin-bottom:4px}
-.detail-venue-en{font-size:16px;color:var(--light);letter-spacing:0.1em;margin-bottom:12px}
+.detail-venue-en{font-size:18px;color:var(--light);letter-spacing:0.1em;margin-bottom:12px}
 .detail-venue-addr{font-size:17px;color:var(--mid);line-height:1.8}
 .detail-timeline-dot{display:flex;flex-direction:column;align-items:center;padding:0.5rem 0;gap:0}
 .dot-line{width:1px;height:20px;background:var(--gold-pale);display:block}
@@ -374,21 +374,42 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
   <div class="section-inner">
     <span class="section-tag fade-in">婚禮詳情 · Wedding Details</span>
     <h2 class="section-h2 fade-in" style="font-size:clamp(22px,3vw,28px);color:var(--light);margin-bottom:0.3rem">婚禮場地 · Wedding Venue</h2>
-    <h2 class="section-h2 fade-in" style="font-size:clamp(30px,5vw,44px)">花田盛事築夢莊園</h2>
-    <span class="section-h2-en fade-in" style="display:block;margin-bottom:0.3rem">618 Puzhong Rd, Zhongli, Taoyuan · 桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></span>
+    <h2 class="section-h2 fade-in" style="font-size:clamp(30px,5vw,44px);margin-bottom:4px">花田盛事築夢莊園</h2>
+    <span class="section-h2-en fade-in" style="display:block;margin-bottom:1.2rem;font-style:italic;font-size:16px;color:var(--light)">Royal Palace</span>
+    <div class="fade-in" style="margin-bottom:2rem">
+      <p style="font-size:17px;color:var(--mid);margin-bottom:2px">桃園市中壢區普忠路618號</p>
+      <p style="font-size:14px;color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</p>
+    </div>
 
     <div class="details-vertical fade-in">
 
       <div class="detail-card-v">
         <div class="detail-card-v-left">
           <span class="detail-time-big">12:00</span>
-          <span class="detail-time-label">午宴準時開席<br>Wedding Banquet<br><span style="font-size:11px;color:var(--light)">11:20 開始報到</span></span>
+          <span class="detail-time-label">午宴<br>Banquet</span>
         </div>
         <div class="detail-card-v-right">
           <p class="detail-venue-name">維多利亞廳</p>
-          <p class="detail-venue-en">花田盛事築夢莊園</p>
-          <p class="detail-venue-addr">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></p>
-          <p class="detail-venue-addr" style="margin-top:0.5rem">👗 著裝建議：正式或半正式 · Formal or semi-formal</p>
+          <p class="detail-venue-en">Victoria Hall</p>
+          <div style="margin-top:1.2rem;border-top:0.5px solid var(--gold-pale);padding-top:1rem;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:1.2rem;align-items:baseline">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--light);flex-shrink:0;min-width:56px">11:20</span>
+              <div>
+                <p style="font-size:18px;color:var(--mid)">開始報到</p>
+                <p style="font-size:14px;color:var(--light)">Check-in begins</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1.2rem;align-items:baseline">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);flex-shrink:0;min-width:56px;font-weight:500">12:00</span>
+              <div>
+                <p style="font-size:20px;color:var(--dark);font-weight:500">午宴準時開席</p>
+                <p style="font-size:15px;color:var(--light)">Banquet begins promptly</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:1rem;padding-top:0.8rem;border-top:0.5px solid var(--gold-pale);font-size:16px;color:var(--light)">
+            著裝建議：正式或半正式 · Formal or semi-formal
+          </div>
         </div>
       </div>
 
@@ -401,7 +422,7 @@ footer{background:var(--dark);padding:3rem 1.5rem;text-align:center}
   <div class="section-inner">
     <span class="section-tag fade-in">前往方式 · Getting Here</span>
     <h2 class="section-h2 fade-in" style="color:var(--white)">花田盛事築夢莊園</h2>
-    <span class="section-h2-en fade-in">桃園市中壢區普忠路618號<br><span style="color:var(--light)">618 Puzhong Rd, Zhongli, Taoyuan</span></span>
+    <span class="section-h2-en fade-in">618 Puzhong Rd, Zhongli, Taoyuan · 桃園市中壢區普忠路618號</span>
     <div class="accordion fade-in">
       <div class="acc-item">
         <button class="acc-btn" onclick="toggleAcc(this)">
