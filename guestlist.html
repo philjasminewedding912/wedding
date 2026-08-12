@@ -165,6 +165,38 @@
   .cat-card .mini-badge.veg{background:var(--rose-pale);color:var(--rose);}
   .cat-card.all-card .mini-badges{flex-shrink:0;}
 
+  .special-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+  }
+  .special-card{
+    background:var(--paper);
+    border:2px solid var(--line);
+    border-radius:14px;
+    padding:14px 10px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 4px 12px -8px rgba(44,35,24,.14);
+  }
+  .special-card.active{
+    border-color:var(--rose);
+    background:linear-gradient(180deg,var(--rose-pale) 0%, var(--paper) 70%);
+  }
+  .special-card .emoji{font-size:1.4rem;display:block;margin-bottom:4px;}
+  .special-card .label{
+    font-family:"Noto Serif TC",serif;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:3px;
+  }
+  .special-card .num{
+    font-size:.72rem;
+    color:var(--ink-soft);
+  }
+  .special-card .num b{color:var(--rose);font-size:.88rem;}
+
   .divider{
     display:flex;
     align-items:center;
@@ -388,6 +420,11 @@
   <div class="cat-grid" id="catGrid"></div>
 </div>
 
+<div class="filter-zone" style="margin-top:6px;">
+  <div class="zone-label">特殊需求總覽（不分分類）</div>
+  <div class="special-grid" id="specialGrid"></div>
+</div>
+
 <div class="divider"><span class="mark">❦</span></div>
 
 <div class="controls-wrap">
@@ -453,6 +490,39 @@ function renderCatGrid(){
     card.addEventListener('click',()=>{
       state.cat = card.dataset.cat;
       renderCatGrid();
+      renderSpecialGrid();
+      render();
+      document.querySelector('.controls-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+}
+
+function renderSpecialGrid(){
+  const grid = document.getElementById('specialGrid');
+  const vegCount = GUEST_DATA.filter(d=>d.veg>0).reduce((s,d)=>s+d.veg,0);
+  const chairCount = GUEST_DATA.filter(d=>d.chair>0).reduce((s,d)=>s+d.chair,0);
+  const kidCount = GUEST_DATA.filter(d=>d.kid>0).reduce((s,d)=>s+d.kid,0);
+  const opts = [
+    {key:'VEG', emoji:'🥗', label:'素食', n:vegCount},
+    {key:'CHAIR', emoji:'🪑', label:'兒童椅', n:chairCount},
+    {key:'KID', emoji:'🧒', label:'有小孩', n:kidCount},
+  ];
+  grid.innerHTML = opts.map(o=>
+    `<div class="special-card ${state.cat==='ALL'&&state.quick===o.key?'active':''}" data-quick="${o.key}">
+      <span class="emoji">${o.emoji}</span>
+      <div class="label">${o.label}</div>
+      <div class="num">共 <b>${o.n}</b> 人</div>
+    </div>`
+  ).join('');
+  grid.querySelectorAll('.special-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      state.cat = 'ALL';
+      state.quick = card.dataset.quick;
+      renderCatGrid();
+      renderSpecialGrid();
+      quickRow.querySelectorAll('.qchip').forEach(c=>c.classList.remove('active'));
+      const matchChip = quickRow.querySelector(`[data-key="${state.quick}"]`);
+      if(matchChip) matchChip.classList.add('active');
       render();
       document.querySelector('.controls-wrap').scrollIntoView({behavior:'smooth', block:'start'});
     });
@@ -568,6 +638,7 @@ function render(){
 
 renderGrandStats();
 renderCatGrid();
+renderSpecialGrid();
 render();
 </script>
 </body>
