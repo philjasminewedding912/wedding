@@ -296,11 +296,9 @@
     padding:15px 17px;
     margin-bottom:9px;
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
+    flex-direction:column;
+    gap:8px;
   }
-  .card .info{min-width:0;flex:1;}
   .card .name-row{
     display:flex;
     align-items:baseline;
@@ -322,23 +320,43 @@
   }
   .badges{
     display:flex;
-    gap:5px;
-    flex-shrink:0;
+    gap:6px;
     flex-wrap:wrap;
-    justify-content:flex-end;
-    max-width:150px;
   }
   .badge{
-    font-size:.7rem;
-    padding:4px 10px;
+    font-size:.74rem;
+    padding:5px 11px;
     border-radius:8px;
-    font-weight:700;
+    font-weight:600;
     white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:4px;
   }
   .badge.adult{background:var(--gold-pale);color:var(--gold-deep);}
   .badge.kid{background:var(--sage-pale);color:var(--sage);}
   .badge.chair{background:var(--sky-pale);color:var(--sky);}
   .badge.veg{background:var(--rose-pale);color:var(--rose);}
+
+  .special-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding-top:6px;
+    border-top:1px dashed var(--line);
+    flex-wrap:wrap;
+  }
+  .special-label{
+    font-size:.66rem;
+    font-weight:700;
+    color:#A3947A;
+    background:#F3EFE4;
+    padding:3px 8px;
+    border-radius:6px;
+    white-space:nowrap;
+    letter-spacing:.5px;
+  }
+  .special-row .badges{margin:0;}
 
   .empty{
     text-align:center;
@@ -410,9 +428,9 @@ function renderCatGrid(){
   let html = `<div class="cat-card all-card ${state.cat==='ALL'?'active':''}" data-cat="ALL">
     <div class="title">全部分類</div>
     <div class="mini-badges">
-      <span class="mini-badge adult">大${allAdult}</span>
-      <span class="mini-badge kid">小${allKid}</span>
-      <span class="mini-badge veg">素${allVeg}</span>
+      <span class="mini-badge adult">大人 ${allAdult}</span>
+      <span class="mini-badge kid">小孩 ${allKid}</span>
+      <span class="mini-badge veg">素食 ${allVeg}</span>
     </div>
   </div>`;
   cats.forEach(c=>{
@@ -423,9 +441,9 @@ function renderCatGrid(){
     html += `<div class="cat-card ${state.cat===c?'active':''}" data-cat="${c}">
       <div class="title">${c}</div>
       <div class="mini-badges">
-        <span class="mini-badge adult">大${adult}</span>
-        ${kid>0?`<span class="mini-badge kid">小${kid}</span>`:''}
-        ${veg>0?`<span class="mini-badge veg">素${veg}</span>`:''}
+        <span class="mini-badge adult">大人 ${adult}</span>
+        ${kid>0?`<span class="mini-badge kid">小孩 ${kid}</span>`:''}
+        ${veg>0?`<span class="mini-badge veg">素食 ${veg}</span>`:''}
       </div>
     </div>`;
   });
@@ -483,13 +501,18 @@ document.getElementById('searchInput').addEventListener('input', e=>{
 
 function filterData(){
   return GUEST_DATA.filter(d=>{
+    // 有輸入搜尋關鍵字時，忽略目前選的分類卡片，全部分類都搜尋得到
+    if(state.search){
+      if(!d.name.toLowerCase().includes(state.search)) return false;
+      if(state.quick==='VEG' && d.veg<=0) return false;
+      if(state.quick==='CHAIR' && d.chair<=0) return false;
+      if(state.quick==='KID' && d.kid<=0) return false;
+      return true;
+    }
     if(state.cat!=='ALL' && d.cat!==state.cat) return false;
     if(state.quick==='VEG' && d.veg<=0) return false;
     if(state.quick==='CHAIR' && d.chair<=0) return false;
     if(state.quick==='KID' && d.kid<=0) return false;
-    if(state.search){
-      if(!d.name.toLowerCase().includes(state.search)) return false;
-    }
     return true;
   });
 }
@@ -501,7 +524,8 @@ function render(){
 
   const fAdult = filtered.reduce((s,d)=>s+d.adult,0);
   const fKid = filtered.reduce((s,d)=>s+d.kid,0);
-  resultLine.innerHTML = `大人 <b>${fAdult}</b> 人 · 小孩 <b>${fKid}</b> 人`;
+  const searchNote = state.search ? '（已搜尋全部分類）' : '';
+  resultLine.innerHTML = `大人 <b>${fAdult}</b> 人 · 小孩 <b>${fKid}</b> 人 ${searchNote}`;
 
   if(filtered.length===0){
     listArea.innerHTML = `<div class="empty"><div class="icon">🔍</div><div class="txt">沒有符合的名單，換個關鍵字試試</div></div>`;
@@ -525,15 +549,15 @@ function render(){
         <div class="meta">大人${adultSum}人${kidSum>0?` · 小孩${kidSum}人`:''}</div>
       </div>`;
     items.forEach(d=>{
-      let badges = `<span class="badge adult">${d.adult}大</span>`;
-      if(d.kid>0) badges += `<span class="badge kid">${d.kid}童</span>`;
-      if(d.chair>0) badges += `<span class="badge chair">椅${d.chair}</span>`;
-      if(d.veg>0) badges += `<span class="badge veg">素${d.veg}</span>`;
+      let mainBadges = `<span class="badge adult">👤 大人 ${d.adult}</span>`;
+      if(d.kid>0) mainBadges += `<span class="badge kid">🧒 小孩 ${d.kid}</span>`;
+      let specialBadges = '';
+      if(d.chair>0) specialBadges += `<span class="badge chair">🪑 兒童椅 ${d.chair}</span>`;
+      if(d.veg>0) specialBadges += `<span class="badge veg">🥗 素食 ${d.veg}</span>`;
       html += `<div class="card">
-        <div class="info">
-          <div class="name-row"><span class="seq">#${d.seq}</span><span class="name">${d.name}</span></div>
-        </div>
-        <div class="badges">${badges}</div>
+        <div class="name-row"><span class="seq">#${d.seq}</span><span class="name">${d.name}</span></div>
+        <div class="badges">${mainBadges}</div>
+        ${specialBadges ? `<div class="special-row"><span class="special-label">特殊需求</span><div class="badges">${specialBadges}</div></div>` : ''}
       </div>`;
     });
     html += `</div>`;
