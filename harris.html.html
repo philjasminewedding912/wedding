@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Welcome to Taiwan, Harris family — 10–12 September</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#6E4F3A;
+    --wine-soft:#8C6A50;
+    --paper:#F5EADD;
+    --paper-2:#E5D3C0;
+    --jade:#5F7A63;
+    --gold:#A5793F;
+    --ink:#3E3029;
+    --muted:#9A8271;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px 72px}
+
+  /* ---------- hero ---------- */
+  header{padding:44px 0 20px}
+  h1{
+    font-family:"Lora",Georgia,serif;
+    font-weight:600;
+    font-size:clamp(29px,8vw,42px);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    color:var(--wine);
+    margin:0;
+  }
+  h1 span{display:block}
+  .greeting{
+    font-family:"Lora",Georgia,serif;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--wine-soft);
+    margin:18px 0 0;
+    max-width:32ch;
+  }
+  .sign{
+    font-family:"Lora",Georgia,serif;
+    font-style:italic;
+    font-size:16px;
+    color:var(--muted);
+    margin:8px 0 0;
+  }
+  .dates{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid var(--paper-2);
+    font-size:15px;
+    color:var(--muted);
+  }
+  .countdown{
+    display:inline-block;
+    margin-top:10px;
+    padding:5px 13px;
+    border-radius:999px;
+    background:var(--wine);
+    color:#fff;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:.01em;
+  }
+
+  /* ---------- filter ---------- */
+  .filter{
+    position:sticky;
+    top:0;
+    z-index:20;
+    margin:0 -20px;
+    padding:12px 20px 12px;
+    background:rgba(245,234,221,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--paper-2);
+  }
+  .filter p{margin:0 0 9px;font-size:13px;color:var(--muted)}
+  .chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{
+    flex:0 0 auto;
+    font:inherit;
+    font-size:14px;
+    padding:6px 14px;
+    border-radius:999px;
+    border:1px solid var(--paper-2);
+    background:transparent;
+    color:var(--wine-soft);
+    cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{background:var(--wine);border-color:var(--wine);color:#fff}
+  .chip:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  /* ---------- days ---------- */
+  .day{margin-top:38px}
+  .day-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .num{
+    font-family:"Lora",Georgia,serif;
+    font-size:56px;
+    font-weight:600;
+    line-height:1;
+    color:var(--paper-2);
+    letter-spacing:-.03em;
+  }
+  .day--wedding .num{color:var(--wine)}
+  .day-label{font-size:14px;color:var(--muted)}
+  .day-label b{display:block;font-weight:700;font-size:16px;color:var(--ink)}
+  .day--wedding .day-label b{color:var(--wine)}
+  .day-rule{height:2px;background:var(--paper-2);margin:8px 0 22px}
+  .day--wedding .day-rule{background:var(--gold)}
+
+  /* ---------- items ---------- */
+  .item{display:flex;gap:14px;padding-bottom:26px;position:relative}
+  .item::before{
+    content:"";position:absolute;left:5px;top:22px;bottom:0;width:1px;background:var(--paper-2);
+  }
+  .item:last-child::before{display:none}
+  .time{flex:0 0 62px;position:relative;padding-left:19px}
+  .time::before{
+    content:"";position:absolute;left:0;top:7px;width:11px;height:11px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--wine-soft);
+  }
+  .item--fixed .time::before{background:var(--gold);border-color:var(--gold)}
+  .time b{display:block;font-size:15px;font-weight:700;color:var(--wine);line-height:1.3}
+  .time i{display:block;font-style:normal;font-size:12px;color:var(--muted)}
+  .body{flex:1;min-width:0}
+  .title{font-size:17px;font-weight:500;margin:1px 0 4px;color:var(--ink)}
+  .note{font-size:14.5px;color:var(--muted);margin:0 0 9px}
+  .flag{
+    display:inline-block;font-size:12.5px;font-weight:500;color:var(--gold);
+    border-bottom:1px solid var(--gold);padding-bottom:1px;margin-bottom:8px;
+  }
+  .who{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .who span{
+    font-size:12.5px;padding:2px 9px;border-radius:999px;
+    background:rgba(95,122,99,.16);color:var(--jade);
+  }
+  .who span.all{background:rgba(110,79,58,.1);color:var(--wine-soft)}
+  .links{display:flex;flex-wrap:wrap;gap:8px}
+  .links a,.links button{
+    font:inherit;font-size:14px;text-decoration:none;cursor:pointer;
+    padding:7px 13px;border-radius:9px;border:1px solid var(--paper-2);
+    background:#fff;color:var(--wine);
+  }
+  .links button{border-style:dashed;background:transparent}
+  .item--open{margin-top:6px;padding-top:20px;border-top:1px dashed var(--paper-2)}
+  .item--open .time::before{display:none}
+  .item--open .time{padding-left:0;flex-basis:74px}
+  .item--open .time b{font-size:13px;font-weight:500;color:var(--muted)}
+  .item:has(+ .item--open)::before{display:none}
+  .seats{margin:2px 0 0;display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:14.5px}
+  .seats dt{font-weight:500;color:var(--wine)}
+  .seats dd{margin:0;color:var(--muted)}
+  .item.dim{opacity:.28}
+
+  /* ---------- taxi sheet ---------- */
+  .sheet{
+    position:fixed;inset:0;z-index:60;display:none;
+    align-items:center;justify-content:center;padding:20px;
+    background:rgba(62,48,41,.5);
+  }
+  .sheet.open{display:flex}
+  .card{
+    background:#fff;border-radius:16px;padding:26px 22px 20px;max-width:400px;width:100%;
+    box-shadow:0 18px 50px rgba(62,48,41,.26);text-align:center;
+  }
+  .card small{display:block;font-size:13px;color:var(--muted);margin-bottom:16px}
+  .card .cn{font-size:27px;font-weight:700;line-height:1.4;color:var(--ink)}
+  .card .addr{font-size:22px;font-weight:500;line-height:1.5;color:var(--ink);margin-top:8px}
+  .card .en{font-size:14px;color:var(--muted);margin-top:14px}
+  .card button{
+    font:inherit;margin-top:20px;width:100%;padding:11px;border-radius:10px;
+    border:none;background:var(--wine);color:#fff;font-size:15px;cursor:pointer;
+  }
+
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--paper-2);font-size:13.5px;color:var(--muted)}
+  footer .love{
+    font-family:"Lora",Georgia,serif;
+    font-style:italic;
+    font-size:19px;
+    color:var(--wine);
+    margin:14px 0 0;
+  }
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1><span>Welcome to Taiwan,</span><span>my dearest</span><span>Harris family</span></h1>
+    <p class="greeting">Thank you for coming all this way to be with us. Here's everything you need for the next three days.</p>
+    <p class="sign">Jasmine &amp; Phil</p>
+    <p class="dates">Thursday 10 — Saturday 12 September 2026<br>Taipei and Zhongli</p>
+    <div class="countdown" id="countdown">The wedding is on Saturday</div>
+  </header>
+
+  <div class="filter">
+    <p>Tap your name to see only the parts you're needed for.</p>
+    <div class="chips" id="chips">
+      <button class="chip" aria-pressed="true" data-who="all">Everyone</button>
+      <button class="chip" aria-pressed="false" data-who="Simon">Simon</button>
+      <button class="chip" aria-pressed="false" data-who="Sam">Sam</button>
+      <button class="chip" aria-pressed="false" data-who="Peter">Peter</button>
+      <button class="chip" aria-pressed="false" data-who="Luke">Luke</button>
+      <button class="chip" aria-pressed="false" data-who="Sophie">Sophie</button>
+      <button class="chip" aria-pressed="false" data-who="Hannah">Hannah</button>
+      <button class="chip" aria-pressed="false" data-who="Papa Harris">Papa Harris</button>
+      <button class="chip" aria-pressed="false" data-who="Mama Eugenie">Mama Eugenie</button>
+    </div>
+  </div>
+
+  <!-- ================= THU 10 ================= -->
+  <section class="day">
+    <div class="day-head">
+      <div class="num">10</div>
+      <div class="day-label"><b>Thursday</b>September</div>
+    </div>
+    <div class="day-rule"></div>
+
+    <div class="item" data-who="all">
+      <div class="time"><b>6:00</b><i>PM</i></div>
+      <div class="body">
+        <p class="title">Dinner at The Grand Hotel</p>
+        <p class="note">Meet in the hotel lobby.</p>
+        <div class="who"><span class="all">Everyone</span></div>
+        <div class="links">
+          <a href="https://maps.app.goo.gl/6Cgh1PWTJcArhmtBA" target="_blank" rel="noopener">Open map</a>
+          <button data-taxi="grand">Show a taxi driver</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FRI 11 ================= -->
+  <section class="day">
+    <div class="day-head">
+      <div class="num">11</div>
+      <div class="day-label"><b>Friday</b>September</div>
+    </div>
+    <div class="day-rule"></div>
+
+    <div class="item" data-who="all">
+      <div class="time"><b>2:30</b><i>PM</i></div>
+      <div class="body">
+        <p class="title">Help pack the gifts</p>
+        <p class="note">Moving things from Jasmine's parents' house and packing gifts. Completely optional, but any hands are very welcome. If you'd like to help, please contact Phil and we'll sort out getting you to Jasmine's parents' house in Zhongli.</p>
+        <div class="who"><span class="all">Anyone who's free</span></div>
+      </div>
+    </div>
+
+    <div class="item item--fixed" data-who="Sam,Peter,Luke">
+      <div class="time"><b>5:00</b><i>PM</i></div>
+      <div class="body">
+        <p class="title">Wedding rehearsal</p>
+        <span class="flag">Be there by 5:00 at the latest</span>
+        <div class="who"><span>Sam</span><span>Peter</span><span>Luke</span></div>
+        <div class="links">
+          <a href="https://maps.app.goo.gl/Nub5KRQHzZ16GTCj7" target="_blank" rel="noopener">Open map</a>
+          <button data-taxi="venue">Show a taxi driver</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item item--open" data-who="all">
+      <div class="time"><b>Any time</b><i>on Friday</i></div>
+      <div class="body">
+        <p class="title">Hotel check-in, Zhongli</p>
+        <p class="note">Le Midi Hotel. No need to plan around this — check in whenever you get there, from 3:00 PM onwards. Reception is on the 23rd floor, so go straight up in the lift.</p>
+        <div class="who"><span class="all">Everyone</span></div>
+        <div class="links">
+          <a href="https://maps.app.goo.gl/iHL9Maj3sx2hUjf78" target="_blank" rel="noopener">Open map</a>
+          <button data-taxi="hotel">Show a taxi driver</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAT 12 ================= -->
+  <section class="day day--wedding">
+    <div class="day-head">
+      <div class="num">12</div>
+      <div class="day-label"><b>Saturday</b>Wedding day</div>
+    </div>
+    <div class="day-rule"></div>
+
+    <div class="item" data-who="Simon,Sam,Peter,Luke">
+      <div class="time"><b>8:00</b><i>AM</i></div>
+      <div class="body">
+        <p class="title">Photos in Phil's room</p>
+        <div class="who"><span>Simon</span><span>Sam</span><span>Peter</span><span>Luke</span></div>
+      </div>
+    </div>
+
+    <div class="item item--fixed" data-who="Simon,Sam,Peter,Luke,Papa Harris,Mama Eugenie">
+      <div class="time"><b>9:10</b><i>AM</i></div>
+      <div class="body">
+        <p class="title">Arrive at the wedding venue</p>
+        <span class="flag">No later than 9:10 — final rehearsal starts at 9:15</span>
+        <p class="note">Anyone else is very welcome to come this early too.</p>
+        <div class="who"><span>Simon</span><span>Sam</span><span>Peter</span><span>Luke</span><span>Papa Harris</span><span>Mama Eugenie</span></div>
+        <div class="links">
+          <a href="https://maps.app.goo.gl/Nub5KRQHzZ16GTCj7" target="_blank" rel="noopener">Open map</a>
+          <button data-taxi="venue">Show a taxi driver</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-who="all">
+      <div class="time"><b>Then</b><i>on the day</i></div>
+      <div class="body">
+        <p class="title">Welcome the guests</p>
+        <p class="note">Stay with Phil at the entrance and greet people as they arrive, then walk them to their table. Look out for the English-speaking guests especially. One of Jasmine's friends speaks English and will be in the lobby to tell you the table number — bring the guests in and seat them.</p>
+        <div class="who"><span class="all">Everyone</span></div>
+      </div>
+    </div>
+
+    <div class="item item--open" data-who="all">
+      <div class="time"><b>Your seats</b><i>at lunch</i></div>
+      <div class="body">
+        <p class="title">Where you're sitting</p>
+        <dl class="seats">
+          <dt>Main table</dt><dd>Papa Harris, Mama Eugenie</dd>
+          <dt>Table 12</dt><dd>Simon, Sophie</dd>
+          <dt>Table 13</dt><dd>Sam, Hannah, Peter, Luke</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Anything unclear, message Jasmine or Phil.
+    <p class="love">We love you all!</p>
+  </footer>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Address for the driver">
+  <div class="card">
+    <small>Show this screen to the driver</small>
+    <div class="cn" id="taxi-cn"></div>
+    <div class="addr" id="taxi-addr"></div>
+    <p class="en" id="taxi-en"></p>
+    <button id="taxi-close">Close</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---- countdown ---- */
+  var wedding = new Date(2026, 8, 12, 9, 10);
+  var el = document.getElementById('countdown');
+  var days = Math.ceil((wedding - new Date()) / 86400000);
+  if (days > 1) el.textContent = days + ' days to go';
+  else if (days === 1) el.textContent = 'Tomorrow';
+  else if (days === 0) el.textContent = 'Today is the day';
+  else el.textContent = 'Congratulations to Jasmine and Phil';
+
+  /* ---- name filter ---- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+
+  function slug(s){ return s.toLowerCase().replace(/ /g,'-'); }
+
+  function apply(who){
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.dataset.who === who); });
+    items.forEach(function(it){
+      var list = it.dataset.who;
+      var show = who === 'all' || list === 'all' || list.split(',').indexOf(who) > -1;
+      it.classList.toggle('dim', !show);
+    });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      apply(c.dataset.who);
+      history.replaceState(null, '', c.dataset.who === 'all' ? '#' : '#' + slug(c.dataset.who));
+    });
+  });
+
+  var hash = (location.hash || '').replace('#','').toLowerCase();
+  var match = chips.filter(function(c){ return slug(c.dataset.who) === hash; })[0];
+  if (match) apply(match.dataset.who);
+
+  /* ---- taxi cards ---- */
+  var places = {
+    grand: { cn:'圓山大飯店', addr:'台北市中山區中山北路四段1號', en:'The Grand Hotel, Taipei' },
+    venue: { cn:'花田盛事築夢莊園 維多利亞廳', addr:'桃園市中壢區普忠路618號', en:'The wedding venue, Zhongli' },
+    hotel: { cn:'中壢米堤大飯店', addr:'桃園市中壢區中央西路一段120號23樓', en:'Le Midi Hotel, Zhongli' }
+  };
+  var sheet = document.getElementById('sheet');
+  document.querySelectorAll('[data-taxi]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = places[b.dataset.taxi];
+      document.getElementById('taxi-cn').textContent = p.cn;
+      document.getElementById('taxi-addr').textContent = p.addr;
+      document.getElementById('taxi-en').textContent = p.en;
+      sheet.classList.add('open');
+    });
+  });
+  function close(){ sheet.classList.remove('open'); }
+  document.getElementById('taxi-close').addEventListener('click', close);
+  sheet.addEventListener('click', function(e){ if (e.target === sheet) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>
